@@ -1,0 +1,60 @@
+<div class="white-text">
+  <h1>{{model.title}}</h1>
+
+  <h4><span class="muted"> {{model.name}}, {{model.date}} </span>
+    <span><button class="btn btn-xs btn-primary" {{action 'edit'}}>Edit</button> <button class="btn btn-xs btn-danger" {{action 'delete'}}>delete</button></span>
+  </h4>
+</div>
+
+{{#if isEditing}}
+  <form>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <br>
+      {{input value=model.title id="title" class="title-input" size="40"}}
+    </div>
+
+    <div class="form-group">
+      <label for="body">Body:</label>
+      <br>
+      {{textarea value=model.body id="body" class="form-control" class="body-input" cols="40" rows="4"}}
+    </div>
+
+    <button class="btn btn-primary" {{action 'save'}}>Save</button>
+  </form>
+{{else}}
+  <div class="question-body">
+    <p>{{model.body}}</p>
+  </div>
+
+{{/if}}
+
+  <div class="answer-button">
+    {{#link-to 'answer'}}<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" >Answer</button>{{/link-to}}
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">What's your answer?</h4>
+        </div>
+        <div class="modal-body">
+          {{outlet}}
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="white-text">
+    {{#each answer in model.answers}}
+      <br>
+      <ul>
+        <dt>{{answer.body}}</dt>
+        <span class="muted"> <dd>{{answer.name}}, {{answer.date}}</dd> </span>
+      </ul>
+    {{/each}}
+  </div>

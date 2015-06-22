@@ -1,0 +1,11 @@
+<div class="white-text">
+  <h1>Ask me a question</h1>
+</div>
+
+  <br>
+
+    <p>{{input type="text" placeholder="Name" value=name class="name-input"}}</p>
+    <p>{{input type="text" placeholder="Questions?" id="title" value=title class="title-input" size="35"}}</p>
+    <p>{{textarea type="text" placeholder="" id="body" value=body class="body-input" rows="6" cols="35"}}</p>
+
+    <button {{action 'addQuestion'}} class="btn btn-info" >Add question</button>

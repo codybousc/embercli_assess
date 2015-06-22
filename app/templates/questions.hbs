@@ -1,0 +1,6 @@
+{{#each question in model}}
+  <div class="question">
+    <h3 class="question"><dt>{{#link-to 'question' question.id}}{{question.title}}{{/link-to}}</dt></h3>
+    <dd class="muted">by {{question.name}}, {{question.date}}</dd>
+  </div>
+{{/each}}
